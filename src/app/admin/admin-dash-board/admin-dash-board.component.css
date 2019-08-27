@@ -1,0 +1,16 @@
+.veg-biryani{
+    background-color: #aeaef7;
+    padding-top: 80px;
+}
+.egg-biryani{
+    background-color: #dd84f3;
+    padding-top: 80px;
+}
+.nonveg-biryani{
+    background-color: #ddfda1;
+    padding-top: 80px;
+}
+
+div > .main{
+    overflow: scroll;
+}
