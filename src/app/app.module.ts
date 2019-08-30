@@ -22,6 +22,7 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { MatIcon, MatIconModule } from '@angular/material';
 import { AdminServiceService } from './admin-service.service';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AdminServiceService } from './admin-service.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    AdminLoginComponent,
   ],
   providers: [AdminServiceService],
   bootstrap: [AppComponent]
