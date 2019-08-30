@@ -1,0 +1,17 @@
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #e66765 2px, rgba(156, 39, 176, 0) 2px),
+     linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+}
+
+::placeholder {
+    color: rgb(252, 246, 246);
+    opacity: 0.5; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(252, 246, 246);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(252, 246, 246);
+  }

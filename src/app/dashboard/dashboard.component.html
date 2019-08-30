@@ -1,0 +1,139 @@
+
+<!-- dash board content -->
+
+<div class="main-content">
+    <div class="container-fluid">
+
+        <!-- food items and rate -->
+        <div class="row">
+            <div *ngFor="let food of foods" class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div [class]=food.class>
+                        <div class="card-icon">
+                            <img [src]=food.Icon width="64px" height="64px">
+                        </div>
+                        <p class="card-category">{{food.name}}</p>
+                        <h4 class="card-title"><i class="fa fa-inr fa-2x" aria-hidden="true"></i>
+                            {{food.rate}}</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-success">check</i>
+                            <a href="javascript:void(0)">Show Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- offer and Addons UI -->
+        <div class="row">
+
+            <!-- offers data -->
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-primary">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title ">Offers</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item" (click)="selectedOfferType('festival offer')">
+                                        <a mat-button class="nav-link active" href="#offerTable" data-toggle="tab">
+                                            <i class="material-icons">add_circle</i>Festival
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" (click)="selectedOfferType('Daily offer')">
+                                        <a mat-button class="nav-link" href="#offerTable" data-toggle="tab">
+                                            <i class="material-icons">add_circle</i> Daily
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" (click)="selectedOfferType('B-BOX offer')">
+                                        <a mat-button class="nav-link" href="#offerTable" data-toggle="tab">
+                                            <i class="material-icons">add_circle</i> B-BOX
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="offerTable">
+                                <table class="table">
+                                    <tbody>
+                                        <ng-container *ngFor="let Offer of offer;index as i">
+                                            <ng-container *ngIf="Offer.type == offerActive">
+                                                <tr *ngFor="let offerList of Offer.offer;index as offerIndex">
+                                                    <td>
+                                                        {{offerIndex+1}}
+                                                    </td>
+                                                    <td>{{offerList}}</td>
+                                                    <td class="td-actions text-right">
+                                                        <button mat-raised-button type="button" matTooltip="Edit Task"
+                                                            [matTooltipPosition]="'above'"
+                                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button mat-raised-button type="button" matTooltip="Remove"
+                                                            [matTooltipPosition]="'above'"
+                                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Addons data table -->
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Addons</h4>
+                        <p class="card-category">Best choice for customer order</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>#</th>
+                                <th colspan="2">Addon</th>
+                                <th>price</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let addons of addon;index as i">
+                                    <td>{{addons.id}}</td>
+                                    <td colspan="2">{{addons.name}}</td>
+                                    <td>{{addons.price}}</td>
+                                    <td class="td-actions">
+                                        <button mat-raised-button type="button" matTooltip="Edit offer"
+                                            [matTooltipPosition]="'above'"
+                                            class="pr-2 btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove"
+                                            [matTooltipPosition]="'above'"
+                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
