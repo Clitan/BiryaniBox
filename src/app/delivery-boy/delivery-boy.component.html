@@ -1,0 +1,100 @@
+<div class="main-content">
+<!-- mat grid iam trying -->
+    <!-- <mat-grid-list cols="2">
+        <mat-grid-tile>
+          
+            
+        </mat-grid-tile>
+        <mat-grid-tile>
+         
+        </mat-grid-tile>
+        
+      </mat-grid-list> -->
+
+  <div class="container fluid">
+    <div class="row">
+      
+          
+
+      <!-- Delivery boy table -->
+      <div class="deliver-boy col-md-8">
+          <div class="card">
+              <div class="card-header card-header-danger">
+                <h4 class="card-title ">Delivery Boys Details</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class=" text-primary">
+                      <th>
+                        ID
+                      </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        phone Number
+                      </th>
+                      <th>
+                        salary
+                      </th>
+                      <th>
+                        Availablity
+                      </th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let boy of deliverboys;index as i"  (mouseover)="display_DeliveryBoy_details(boy.id)" (mouseleave)="showDetails=true">
+                        <td>
+                          {{boy.id}}
+                        </td>
+                        <td>
+                          {{boy.name}}
+                        </td>
+                        <td>
+                          {{boy.phoneNumber}}
+                        </td>
+                        <td>
+                          {{boy.salary}}
+                        </td>
+                        <td>
+                          {{boy.availablity}}
+                        </td>
+                        <td class="td-actions">
+                          <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'"
+                            class="pr-2 btn btn-danger btn-link btn-sm btn-just-icon">
+                            <i class="material-icons">edit</i>
+                          </button>
+                          <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
+                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> 
+      </div>
+      <!-- Delivery boy Details -->
+      <div class="col-md-4" [ngClass]="{ 'd-none': showDetails  }">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <!-- img is not a part of dispaly delivery boy -->
+            <a href="javascript:void(0)">
+              <img class="img" src="./assets/img/faces/marc.jpg" />
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">{{deliveryboyDetails.name}}</h6>
+            <h4 class="card-title">{{deliveryboyDetails.phoneNumber}}</h4>
+            <p class="card-description">
+             
+            </p>
+            <a href="javascript:void(0)" class="btn btn-danger btn-round">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
