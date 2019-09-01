@@ -1,7 +1,8 @@
-.card{
+.food-item-card{
     transition: 0.4s ease-in-out;
 }
-/* .card:hover{
+.food-item-card:hover{
         transform: scale(1.05);  
-} */
+}
 
+ 

@@ -12,10 +12,10 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { MatIcon, MatIconModule, MatCard, MatCardModule } from '@angular/material';
+import { MatIcon, MatIconModule, MatCard, MatCardModule, MatGridListModule } from '@angular/material';
 import { AdminServiceService } from './admin-service.service';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { DeliveryBoyModule } from './delivery-boy/delivery-boy.module';
+
 
 
 @NgModule({
@@ -29,7 +29,6 @@ import { DeliveryBoyModule } from './delivery-boy/delivery-boy.module';
     AppRoutingModule,
     MatIconModule,
     MatCardModule,
-    DeliveryBoyModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -37,8 +36,8 @@ import { DeliveryBoyModule } from './delivery-boy/delivery-boy.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AdminLoginComponent
-  ],
+    AdminLoginComponent,
+      ],
   providers: [AdminServiceService],
   bootstrap: [AppComponent]
 })
