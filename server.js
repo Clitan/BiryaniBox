@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const config = require('config');
 const path = require('path');
 const addons = require('./server/routes/addons_routes');
 const delivery_boy = require('./server/routes/delivery_boy_routes');
@@ -22,14 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://admin:password12345@biryanibox-vi1r7.gcp.mongodb.net/Biryani_Box?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-  })
-  .then(() => console.log('Conncected to mongodb'))
-  .catch(err => console.error('Could not found'));
-
+require('./server/model/connections/mongodb.connection')();
 
 
 app.use('/api/customers', customers);
@@ -46,7 +40,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 
 });
-
 app.listen(port, function () {
   console.log("Running on port" + port);
 });
+
+export default app;
