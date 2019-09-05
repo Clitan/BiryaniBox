@@ -4,4 +4,5 @@ export interface FoodItem{
     rate: number,
     Icon: string,
     class ?:String; 
+    discription ?:String;
 };
