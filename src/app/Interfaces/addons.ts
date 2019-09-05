@@ -1,5 +1,5 @@
 export interface Addons{
-    id:number,
+    id:number
     name:string
     price:number
 }

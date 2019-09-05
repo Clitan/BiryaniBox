@@ -24,6 +24,7 @@ export class AdminServiceService {
     this.addons = ADDONS;
     this.offers = OFFERS;
     this.deliveryboy=DELIVERYBOY;
+   
   }
 }
 

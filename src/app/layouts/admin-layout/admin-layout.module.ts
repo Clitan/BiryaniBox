@@ -17,6 +17,9 @@ import {
   MatSelectModule,
   MatGridListModule,
 } from '@angular/material';
+import { AddonsListComponent } from 'app/dashboard/addons-list/addons-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
@@ -30,13 +33,16 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule,
+    HttpModule
   ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
-    DeliveryBoyComponent
+    DeliveryBoyComponent,
+    AddonsListComponent
   ]
 })
 
