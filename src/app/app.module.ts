@@ -17,6 +17,7 @@ import { AdminServiceService } from './admin-service.service';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminLoginModule } from './admin-login/admin-login.module';
 
 
 
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     HttpClientModule,
     HttpModule,
+    AdminLoginModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -40,7 +42,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AdminLoginComponent,
       ],
   providers: [AdminServiceService],
   bootstrap: [AppComponent]

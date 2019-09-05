@@ -20,6 +20,8 @@ import {
 import { AddonsListComponent } from 'app/dashboard/addons-list/addons-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { AdminSignupComponent } from 'app/admin-login/admin-signup/admin-signup.component';
+import { AdminLoginComponent } from 'app/admin-login/admin-login.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ import { HttpModule } from '@angular/http';
     UserProfileComponent,
     TableListComponent,
     DeliveryBoyComponent,
+
     AddonsListComponent
   ]
 })

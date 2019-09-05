@@ -52,12 +52,12 @@ export class DashboardComponent implements OnInit {
     this.foods = adminService.foodItems;
     this.addon = adminService.addons;
     this.offer = adminService.offers;
-
   }
 
 
   ngOnInit() {
  this.http.get('/api/addons').subscribe(val=>console.log(val));
+ this.http.get('/api/d').subscribe(val=>console.log(val));
  
   }
 
