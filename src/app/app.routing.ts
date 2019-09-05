@@ -7,10 +7,12 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { MapsComponent } from './maps/maps.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes =[
 
     { path: 'Login', component: AdminLoginComponent },
+    { path: 'signup', component: SignupComponent  },
 
   // {
   //   path: '',

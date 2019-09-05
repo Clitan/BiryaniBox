@@ -11,12 +11,12 @@ import { OFFERS } from './db/OFFERS';
 })
 
 export class AdminServiceService {
-
+  
   foodItems : FoodItem[];
   addons    : Addons[];
   offers    : Offfers[];
-
-  constructor() {
+ 
+  constructor( ) {
     this.foodItems = FOODITEMS;
     this.addons    = ADDONS;
     this.offers    = OFFERS;

@@ -1,0 +1,59 @@
+<form >
+    <!-- (ngSubmit)="submit()" -->
+<mat-card class="example-card">
+  
+  <!-- <img src="assets/img/cover.jpeg" class="md-card-image" > -->
+
+<div id="main">
+  <h4>Signup</h4>
+
+<mat-form-field class="example-full-width">
+        <!-- <mat-icon matPrefix>account_circle</mat-icon> -->
+    <input matInput placeholder="Name"  type="text" [formControl]="usrname"  id="name" required>
+    <!-- pattern="/[aA-zZ\s]$/" -->
+    <!-- <mat-error *ngIf="usrname.hasError('required')">
+        please Enter 
+             </mat-error>-->
+             <!-- <mat-error *ngIf="usrname.hasError('pattern')">
+              Must Enter valid name
+                   </mat-error>  -->
+        <mat-error *ngIf="usrname.invalid">{{getusr()}}</mat-error>
+           
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email Address" name="email" id="email" type="email" [formControl]="email" required>
+					
+            <!-- <mat-icon matPrefix>email</mat-icon> -->
+             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+           </mat-form-field>
+           <mat-form-field hintlabel="max 10 character">
+				<input matInput #input maxlength="10" type="number"  placeholder="Phone Number" [formControl]="phone"  required minlength="10">
+				<!-- [formControl]="phone" -->
+				<!-- <mat-icon matPrefix>phone</mat-icon> -->
+				
+        <mat-error *ngIf="phone.invalid">{{getError()}}</mat-error>
+        <!-- <mat-error *ngIf="phone.hasError('minlength')">Password must be at least 8 characters
+        </mat-error> -->
+				   </mat-form-field>
+            
+  
+
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" type="password" [formControl]="passFormControl" required minlength="8">
+      <!-- pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/" -->
+      <!-- <mat-icon matPrefix>lock</mat-icon> -->
+      <mat-error *ngIf="passFormControl.hasError('required')">
+     Please Enter password 
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">Password must be at least 8 characters
+          </mat-error>
+     
+    </mat-form-field>
+    
+      <button mat-raised-button color="accent" >Signup</button>
+     <p> Already have an account? <a [routerLink]="['/Login']">Login</a></p>
+
+     <!-- mat-raised-button color="accent" -->
+    </div>
+  </mat-card>
+  </form>

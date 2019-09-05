@@ -20,9 +20,12 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { MatIcon, MatIconModule } from '@angular/material';
+import { MatIconModule, MatFormFieldModule, MatCardModule,MatInputModule,MatButtonModule } from '@angular/material';
 import { AdminServiceService } from './admin-service.service';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 @NgModule({
@@ -35,6 +38,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     RouterModule,
     AppRoutingModule,
     MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -43,6 +51,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AppComponent,
     AdminLayoutComponent,
     AdminLoginComponent,
+    SignupComponent,
   ],
   providers: [AdminServiceService],
   bootstrap: [AppComponent]
