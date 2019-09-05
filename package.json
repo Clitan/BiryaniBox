@@ -95,5 +95,16 @@
     "ts-node": "8.2.0",
     "tslint": "5.17.0",
     "typescript": "3.4.5"
-  }
+  },
+  "description": "",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clitan/BiryaniBox.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Clitan/BiryaniBox/issues"
+  },
+  "homepage": "https://github.com/Clitan/BiryaniBox#readme"
 }
