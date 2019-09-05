@@ -9,7 +9,7 @@ import { DeliveryBoy } from 'app/Interfaces/delivery-boy';
   styleUrls: ['./delivery-boy.component.scss']
 })
 export class DeliveryBoyComponent implements OnInit {
-
+  formOrData=true;
   showDetails = true;
   index = 0;
   deliverboys: DeliveryBoy[];
@@ -29,6 +29,10 @@ export class DeliveryBoyComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  showForm(){
+    this.formOrData=!this.formOrData;
   }
 
 }
