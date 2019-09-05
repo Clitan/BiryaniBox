@@ -6,9 +6,9 @@ import { Offfers } from 'app/Interfaces/offers';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-export interface x{
-  name:string,
-  price:number
+export interface x {
+  name: string,
+  price: number
 }
 
 @Component({
@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   name: String;
   price: Number;
   Edit: boolean = false;
+  data: any;
 
   offerActive: string;
   isAdd: boolean = false;
@@ -47,18 +48,22 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  constructor(private adminService: AdminServiceService,private http: HttpClient) {
+  constructor(private adminService: AdminServiceService, private http: HttpClient) {
     this.offerActive = "festival offer";
     this.foods = adminService.foodItems;
     this.addon = adminService.addons;
     this.offer = adminService.offers;
+    this.http.get('/api/addons').subscribe((val) => {
+      this.data = val;
+      this.data = JSON.parse(this.data)
+      console.log(val);
+    });
   }
 
 
   ngOnInit() {
- this.http.get('/api/addons').subscribe(val=>console.log(val));
- this.http.get('/api/d').subscribe(val=>console.log(val));
- 
+    this.http.get('/api/addons').subscribe(val => console.log(val));
+
   }
 
   selectedOfferType(selected: string): void {
@@ -71,7 +76,7 @@ export class DashboardComponent implements OnInit {
     this.addon = this.adminService.addons;
   }
 
-  addNewAddon():void {
+  addNewAddon(): void {
     this.isAdd = !this.isAdd;
     this.newAddon = {
       id: this.adminService.addons.length + 1,
@@ -110,7 +115,7 @@ export class DashboardComponent implements OnInit {
     this.Edit = true;
     this.Id = value.id;
     this.name = value.name;
-    this.price =  value.price;
+    this.price = value.price;
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="main-content">
-<!-- mat grid iam trying -->
-    <!-- <mat-grid-list cols="2">
+  <!-- mat grid iam trying -->
+  <!-- <mat-grid-list cols="2">
         <mat-grid-tile>
           
             
@@ -13,68 +13,151 @@
 
   <div class="container fluid">
     <div class="row">
-      
-         
+
+
 
       <!-- Delivery boy table -->
       <div class="deliver-boy col-md-8">
-          <div class="card">
-              <div class="card-header card-header-danger">
-                <h4 class="card-title ">Delivery Boys Details</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead class=" text-primary">
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        phone Number
-                      </th>
-                      <th>
-                        salary
-                      </th>
-                      <th>
-                        Availablity
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let boy of deliverboys;index as i"  (mouseover)="display_DeliveryBoy_details(boy.id)" (mouseleave)="showDetails=true">
-                        <td>
-                          {{boy.id}}
-                        </td>
-                        <td>
-                          {{boy.name}}
-                        </td>
-                        <td>
-                          {{boy.phoneNumber}}
-                        </td>
-                        <td>
-                          {{boy.salary}}
-                        </td>
-                        <td>
-                          {{boy.availablity}}
-                        </td>
-                        <td class="td-actions">
-                          <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'"
-                            class="pr-2 btn btn-danger btn-link btn-sm btn-just-icon">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
-                            class="btn btn-danger btn-link btn-sm btn-just-icon">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <span *ngIf="formOrData" class="card-title display-5 font-weight-bold">delivery boy Details</span>
+            <span *ngIf="!formOrData" class="card-title display-5 font-weight-bold">delivery boy</span>
+            <button mat-raised-button type="button"
+              class=" float-right pr-2 btn btn-white btn-link btn-lg btn-just-icon">
+              <i *ngIf="formOrData" matTooltip="new" [matTooltipPosition]="'above'" (click)="showForm()"
+                class="material-icons">add_circle_outline</i>
+              <i *ngIf="!formOrData" matTooltip="cancel" [matTooltipPosition]="'above'" (click)="showForm()"
+                class="material-icons">clear</i>
+            </button>
+          </div>
+          <div *ngIf="!formOrData" class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Biryani BOX" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email address" type="email">
+                    <span matSuffix>@gmail.com</span>
+                  </mat-form-field>
                 </div>
               </div>
-            </div> 
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Fist Name" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Last Name" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Adress" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="City" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Country" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Postal Code" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <label>create new employee</label>
+              <!-- <div class="row">
+                                  <div class="col-md-12">
+                                    <label>About Employee</label>
+                                    <mat-form-field class="example-full-width">
+                                       <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                     </mat-form-field>
+                                       <div class="form-group">
+    
+                                          <div class="form-group">
+                                              <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                              <textarea class="form-control" rows="5"></textarea>
+                                          </div>
+                                      </div> 
+                                  </div>
+                              </div> -->
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right">save</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+          <div *ngIf="formOrData" class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class=" text-primary">
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    phone Number
+                  </th>
+                  <th>
+                    salary
+                  </th>
+                  <th>
+                    Availablity
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let boy of deliverboys;index as i" (mouseover)="display_DeliveryBoy_details(boy.id)"
+                    (mouseleave)="showDetails=true">
+                    <td>
+                      {{boy.id}}
+                    </td>
+                    <td>
+                      {{boy.name}}
+                    </td>
+                    <td>
+                      {{boy.phoneNumber}}
+                    </td>
+                    <td>
+                      {{boy.salary}}
+                    </td>
+                    <td>
+                      {{boy.availablity}}
+                    </td>
+                    <td class="td-actions">
+                      <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'"
+                        class="pr-2 btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons" (click)="showForm()">edit</i>
+                      </button>
+                      <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Delivery boy Details -->
       <div class="col-md-4" [ngClass]="{ 'd-none': showDetails  }">
@@ -89,8 +172,12 @@
             <h6 class="card-category text-gray">{{deliveryboyDetails.name}}</h6>
             <h4 class="card-title">{{deliveryboyDetails.phoneNumber}}</h4>
             <p class="card-description">
-             
-            </p>
+              <p>Subraya Nayak,</p>
+              <p>Arasubailu house hadiyangadi,</p>
+              <p>post Karkala taluk Udup dist,</p>
+              <p> pincode-5741001</p>
+           
+
             <a href="javascript:void(0)" class="btn btn-danger btn-round">{{deliveryboyDetails.availablity}}</a>
           </div>
         </div>

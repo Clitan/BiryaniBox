@@ -5,7 +5,7 @@ const addons=require('./server/routes/addons_routes');
 
 const api = require('./server/routes/api');
 
-const port = 4200;
+const port = 3000;
 
 const app = express();
 
