@@ -13,10 +13,19 @@ const Delivery_user_Schema = new mongoose.Schema({
     type: Number,
     maxlength: 10
   },
+  // city: {
+  //   type:String
+  // },
+  // district: {
+  //   type: String
+  // },
+  // pincode: {
+  //   type: Number
+  // },
   delivery_boy_address: {
     type: String,
     trim: true,
-    minlength: 10,
+    minlength: 5,
     maxlength: 500
   }
 });
@@ -27,7 +36,10 @@ function validateUser(user) {
   const schema = {
     name: Joi.string().min(2).max(255).required(),
     phoneNumber: Joi.number().required(),
-    delivery_boy_address: Joi.string().min(10).max(500).required()
+    // city: Joi.string().required(),
+    // district: Joi.string().required(),
+    // pincode: Joi.string().required(),
+    delivery_boy_address: Joi.string().min(5).max(500).required()
   };
   return Joi.validate(user, schema);
 }
