@@ -6,10 +6,10 @@ import {
 } from '../helper/http_handler.helper';
 import {
   OfferType
-} from '../models/offerType';
+} from '../model/offerType';
 import {
   Offer
-} from '../models/offer';
+} from '../model/offer';
 
 export default class OfferController extends BaseController {
 

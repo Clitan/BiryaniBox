@@ -6,13 +6,13 @@ import {
 } from '../helper/http_handler.helper';
 import {
   Customer
-} from '../models/customer';
+} from '../model/customer';
 import {
   Offer
-} from '../models/offer';
+} from '../model/offer';
 import {
   user_offerModel
-} from '../models/user_offer_connect';
+} from '../model/user_offer_connect';
 
 export default class User_OfferController extends BaseController {
 

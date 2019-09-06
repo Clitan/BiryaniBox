@@ -1,10 +1,10 @@
 import {
   Offer,
   validate
-} from '../models/offer';
+} from '../model/offer';
 import express from 'express';
 const router = express.Router();
-import auth from '../middleware/auth';
+// import auth from '../middleware/auth';
 import OfferController from '../controllers/OfferController';
 const OfferControllerClass = new OfferController(Offer);
 

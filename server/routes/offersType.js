@@ -1,8 +1,8 @@
 import {
   OfferType,
   validate
-} from '../models/offerType';
-import auth from '../middleware/auth';
+} from '../model/offerType';
+// import auth from '../middleware/auth';
 import express from 'express';
 const router = express.Router();
 import BaseController from '../controllers/BaseController';
@@ -10,7 +10,7 @@ import {
   resError
 } from '../helper/http_handler.helper';
 const OfferTypeControllerClass = new BaseController(OfferType);
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const {
     error
   } = validate(req.body);
@@ -22,7 +22,7 @@ router.post('/', auth, async (req, res) => {
 router.get('/', async (req, res) => await OfferTypeControllerClass.getAll(req, res));
 
 
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   const {
     error
   } = validate(req.body);
@@ -33,7 +33,7 @@ router.put('/:id', auth, async (req, res) => {
   OfferTypeControllerClass.update(req, res);
 });
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const offer_id = await OfferType.findById(req.params.id);
 
   if (!offer_id) return resError(res, 'The Item with the given ID was not found.');

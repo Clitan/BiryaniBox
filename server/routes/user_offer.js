@@ -1,13 +1,13 @@
 import {
   Offer,
   validate
-} from '../models/offer';
+} from '../model/offer';
 import {
   Customer
-} from '../models/customer';
+} from '../model/customer';
 import {
   user_offerModel
-} from '../models/user_offer_connect';
+} from '../model/user_offer_connect';
 import express from 'express';
 const router = express.Router();
 import User_OfferController from '../controllers/User_OfferController';
