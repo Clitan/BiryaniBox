@@ -16,6 +16,7 @@ export interface x {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   foods: FoodItem[];
