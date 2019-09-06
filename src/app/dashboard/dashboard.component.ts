@@ -43,6 +43,8 @@ export class DashboardComponent implements OnInit {
     console.log(this.addonPrice.value);
   }
 
+
+
   onNameChange() {
     console.log(this.addonName.value);
   }
