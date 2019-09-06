@@ -7,6 +7,14 @@ import { Offfers } from './Interfaces/offers';
 import { OFFERS } from './db/OFFERS';
 import { DeliveryBoy } from './Interfaces/delivery-boy';
 import { DELIVERYBOY } from './db/DELIVERY-BOY';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs';
+export interface Hero {
+  name: string;
+  price:number;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +25,31 @@ export class AdminServiceService {
   foodItems: FoodItem[];
   addons: Addons[];
   offers: Offfers[];
-  deliveryboy:DeliveryBoy[];
+  deliveryboy: DeliveryBoy[];
 
-  constructor() {
+
+  heroesUrl = 'api/addons';  // URL to web api
+
+  constructor(private Http: HttpClient) {
     this.foodItems = FOODITEMS;
     this.addons = ADDONS;
     this.offers = OFFERS;
-    this.deliveryboy=DELIVERYBOY;
-   
+    this.deliveryboy = DELIVERYBOY;
+
   }
+
+  getHeroes (): Observable<any[]> {
+    return this.Http.get<any[]>(this.heroesUrl);
+  }
+
+//   storedata(data) {
+//     return this.HttpClient.post("url",data, {
+//       headers: new HttpHeaders({
+//            'Content-Type':  'application/json',
+//          })
+//     }).map(a=>
+//      a);
+// }
 }
 
 

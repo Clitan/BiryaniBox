@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'app/admin-service.service';
 import { DeliveryBoy } from 'app/Interfaces/delivery-boy';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({
@@ -9,30 +11,36 @@ import { DeliveryBoy } from 'app/Interfaces/delivery-boy';
   styleUrls: ['./delivery-boy.component.scss']
 })
 export class DeliveryBoyComponent implements OnInit {
-  formOrData=true;
+  formOrData = true;
   showDetails = true;
   index = 0;
-  deliverboys: DeliveryBoy[];
-  deliveryboyDetails: DeliveryBoy;
+  deliverboys: any=null;
+  deliveryboyDetails: any=null;
 
 
-  constructor(private adminService: AdminServiceService) {
-    this.deliverboys = adminService.deliveryboy;
+  constructor(private adminService: AdminServiceService, private http: HttpClient) {
+    this.http.get('/api/delivery_boy').subscribe((val) => {
+      this.deliverboys = val;
+      console.log(val);
+    });
+
   }
 
-  display_DeliveryBoy_details(id: number): void {
+  display_DeliveryBoy_details(id: String): void {
+    var url = '/api/delivery_boy/'+id;
+    console.log(id);
     this.showDetails = false;
-    this.adminService.deliveryboy.forEach(element => {
-      if (element.id == id)
-        this.deliveryboyDetails = element;
+    this.http.get(url).subscribe((val) => {
+      this.deliveryboyDetails = val;
+      console.log(val);
     });
   }
 
   ngOnInit() {
   }
 
-  showForm(){
-    this.formOrData=!this.formOrData;
+  showForm() {
+    this.formOrData = !this.formOrData;
   }
 
 }
