@@ -125,10 +125,10 @@
                   </th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let boy of deliverboys;index as i" (mouseover)="display_DeliveryBoy_details(boy.id)"
+                  <tr *ngFor="let boy of deliverboys.payload;index as i" (mouseover)="display_DeliveryBoy_details(boy._id)"
                     (mouseleave)="showDetails=true">
                     <td>
-                      {{boy.id}}
+                      {{i+1}}
                     </td>
                     <td>
                       {{boy.name}}
@@ -140,7 +140,7 @@
                       {{boy.salary}}
                     </td>
                     <td>
-                      {{boy.availablity}}
+                      {{boy.isAvailable}}
                     </td>
                     <td class="td-actions">
                       <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'"
@@ -169,16 +169,14 @@
             </a>
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">{{deliveryboyDetails.name}}</h6>
-            <h4 class="card-title">{{deliveryboyDetails.phoneNumber}}</h4>
+            <h6 class="card-category text-gray">{{deliveryboyDetails.payload.name}}</h6>
+            <h4 class="card-title">{{deliveryboyDetails.payload.phoneNumber}}</h4>
             <p class="card-description">
               <p>Subraya Nayak,</p>
               <p>Arasubailu house hadiyangadi,</p>
               <p>post Karkala taluk Udup dist,</p>
               <p> pincode-5741001</p>
-           
-
-            <a href="javascript:void(0)" class="btn btn-danger btn-round">{{deliveryboyDetails.availablity}}</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-round">{{deliveryboyDetails.payload.isAvailable}}</a>
           </div>
         </div>
       </div>

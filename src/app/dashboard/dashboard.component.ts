@@ -55,7 +55,6 @@ export class DashboardComponent implements OnInit {
     this.offer = adminService.offers;
     this.http.get('/api/addons').subscribe((val) => {
       this.data = val;
-      this.data = JSON.parse(this.data)
       console.log(val);
     });
   }
