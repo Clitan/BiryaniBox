@@ -14,6 +14,7 @@ const login = require('./server/routes/login');
 const offers = require('./server/routes/offers');
 const offerTypes = require('./server/routes/offersType');
 const user_offers = require('./server/routes/user_offer');
+const notification = require('./server/routes/notifications');
 
 const port = 3000;
 
@@ -40,6 +41,7 @@ app.use('/api/addons', addons);
 app.use('/api/offers', offers);
 app.use('/api/offerTypes', offerTypes);
 app.use('/api/user_offers', user_offers);
+app.use('/api/notifications', notification);
 
 
 app.get('*', (req, res) => {
