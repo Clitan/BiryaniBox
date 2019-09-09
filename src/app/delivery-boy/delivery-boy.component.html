@@ -85,82 +85,63 @@
                 </div>
               </div>
               <label>create new employee</label>
-              <!-- <div class="row">
-                                  <div class="col-md-12">
-                                    <label>About Employee</label>
-                                    <mat-form-field class="example-full-width">
-                                       <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                     </mat-form-field>
-                                       <div class="form-group">
-    
-                                          <div class="form-group">
-                                              <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                              <textarea class="form-control" rows="5"></textarea>
-                                          </div>
-                                      </div> 
-                                  </div>
-                              </div> -->
               <button mat-raised-button type="submit" class="btn btn-danger pull-right">save</button>
               <div class="clearfix"></div>
             </form>
           </div>
           <div *ngIf="formOrData" class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead class=" text-primary">
-                  <th>
-                    ID
-                  </th>
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    phone Number
-                  </th>
-                  <th>
-                    salary
-                  </th>
-                  <th>
-                    Availablity
-                  </th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let boy of deliverboys.payload;index as i" (mouseover)="display_DeliveryBoy_details(boy._id)"
-                    (mouseleave)="showDetails=true">
-                    <td>
-                      {{i+1}}
-                    </td>
-                    <td>
-                      {{boy.name}}
-                    </td>
-                    <td>
-                      {{boy.phoneNumber}}
-                    </td>
-                    <td>
-                      {{boy.salary}}
-                    </td>
-                    <td>
-                      {{boy.isAvailable}}
-                    </td>
-                    <td class="td-actions">
-                      <button mat-raised-button type="button" matTooltip="Edit" [matTooltipPosition]="'above'"
-                        class="pr-2 btn btn-danger btn-link btn-sm btn-just-icon">
-                        <i class="material-icons" (click)="showForm()">edit</i>
-                      </button>
-                      <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
-                        class="btn btn-danger btn-link btn-sm btn-just-icon">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+
+            <mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+
+              <!-- index Column -->
+              <ng-container matColumnDef="_id">
+                <mat-header-cell class="text-danger" *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell (mouseover)="display_DeliveryBoy_details(element)" (mouseleave)="showDetails=true"
+                  *matCellDef="let element;let i = index"> {{i+1}} </mat-cell>
+              </ng-container>
+
+              <!-- firstName Column -->
+              <ng-container matColumnDef="firstName">
+                <mat-header-cell class="text-danger" *matHeaderCellDef> firstName </mat-header-cell>
+                <mat-cell (mouseover)="display_DeliveryBoy_details(element)" (mouseleave)="showDetails=true"
+                  *matCellDef="let element"> {{element.firstName}} </mat-cell>
+              </ng-container>
+
+              <!--phoneNumber  Column -->
+              <ng-container matColumnDef="phoneNumber">
+                <mat-header-cell class="text-danger" *matHeaderCellDef> phoneNumber </mat-header-cell>
+                <mat-cell (mouseover)="display_DeliveryBoy_details(element)" (mouseleave)="showDetails=true"
+                  *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+              </ng-container>
+
+              <!--salary  Column -->
+              <ng-container matColumnDef="salary">
+                <mat-header-cell class="text-danger" *matHeaderCellDef> Salary </mat-header-cell>
+                <mat-cell (mouseover)="display_DeliveryBoy_details(element)" (mouseleave)="showDetails=true"
+                  *matCellDef="let element"> {{element.salary}} </mat-cell>
+              </ng-container>
+
+
+              <!--isAvailable  Column -->
+              <ng-container matColumnDef="isAvailable">
+                <mat-header-cell class="text-danger" *matHeaderCellDef> isAvailable </mat-header-cell>
+                <mat-cell (mouseover)="display_DeliveryBoy_details(element)" (mouseleave)="showDetails=true"
+                  *matCellDef="let element">
+                  <ng-container *ngIf="element.isAvailable == true">Available</ng-container>
+                  <ng-container *ngIf="element.isAvailable == false">UnAvailable</ng-container>
+                </mat-cell>
+              </ng-container>
+
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
           </div>
         </div>
       </div>
       <!-- Delivery boy Details -->
-      <div class="col-md-4" [ngClass]="{ 'd-none': showDetails  }">
+      <div class="display_card col-md-4" [ngClass]="{ 'd-none': showDetails  }">
         <div class="card card-profile">
           <div class="card-avatar">
             <!-- img is not a part of dispaly delivery boy -->
@@ -169,14 +150,16 @@
             </a>
           </div>
           <div class="card-body">
-            <h6 class="card-category text-gray">{{deliveryboyDetails.payload.name}}</h6>
-            <h4 class="card-title">{{deliveryboyDetails.payload.phoneNumber}}</h4>
+            <h6 class="card-category text-gray">{{deliveryboyDetails.firstName +"  "+deliveryboyDetails.lastName}}</h6>
+            <h4 class="card-title">{{deliveryboyDetails.email}}</h4>
             <p class="card-description">
-              <p>Subraya Nayak,</p>
-              <p>Arasubailu house hadiyangadi,</p>
-              <p>post Karkala taluk Udup dist,</p>
-              <p> pincode-5741001</p>
-            <a href="javascript:void(0)" class="btn btn-danger btn-round">{{deliveryboyDetails.payload.isAvailable}}</a>
+              <p>{{deliveryboyDetails.delivery_boy_address}}</p>
+              <p>{{deliveryboyDetails.city+","+deliveryboyDetails.country}}</p>
+              <p>{{deliveryboyDetails.pincode}}</p>
+              <!-- <a href="javascript:void(0)" *ngIf="deliveryboyDetails.isAvailable == true" class="btn btn-danger btn-round">Available -->
+                <!-- <ng-container ></ng-container>
+                <ng-container *ngIf="deliveryboyDetails.isAvailable == false">UnAvailable</ng-container> -->
+              <!-- </a> -->
           </div>
         </div>
       </div>

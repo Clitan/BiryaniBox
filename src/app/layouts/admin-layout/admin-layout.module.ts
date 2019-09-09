@@ -16,12 +16,14 @@ import {
   MatTooltipModule,
   MatSelectModule,
   MatGridListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { AddonsListComponent } from 'app/dashboard/addons-list/addons-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { AdminSignupComponent } from 'app/admin-login/admin-signup/admin-signup.component';
-import { AdminLoginComponent } from 'app/admin-login/admin-login.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { AdminLoginComponent } from 'app/admin-login/admin-login.component';
     MatTooltipModule,
     MatGridListModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [
     DashboardComponent,
@@ -49,4 +53,4 @@ import { AdminLoginComponent } from 'app/admin-login/admin-login.component';
   ]
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }

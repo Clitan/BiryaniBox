@@ -6,6 +6,16 @@ import { Offfers } from 'app/Interfaces/offers';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+export interface postData {
+  success: boolean,
+  payload: [
+    {
+      name: string,
+      price: number
+    }
+  ]
+}
+
 export interface x {
   name: string,
   price: number
@@ -16,17 +26,19 @@ export interface x {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   foods: FoodItem[];
   addon: Addons[];
   offer: Offfers[];
   newAddon: Addons;
-  Id: number;
-  name: String;
-  price: Number;
+  EditAddon: any;
   Edit: boolean = false;
   data: any;
+  name: string;
+  price: number;
+  editid: string;
 
   offerActive: string;
   isAdd: boolean = false;
@@ -44,79 +56,74 @@ export class DashboardComponent implements OnInit {
   }
 
 
-
   onNameChange() {
     console.log(this.addonName.value);
   }
-
+  addNewAddons = {
+    name: "hello",
+    price: 0
+  }
 
   constructor(private adminService: AdminServiceService, private http: HttpClient) {
     this.offerActive = "festival offer";
     this.foods = adminService.foodItems;
-    this.addon = adminService.addons;
     this.offer = adminService.offers;
+    this.getAddonsData();
+  }
+
+  getAddonsData(){
     this.http.get('/api/addons').subscribe((val) => {
       this.data = val;
-      console.log(val);
     });
   }
 
-
   ngOnInit() {
-    this.http.get('/api/addons').subscribe(val => console.log(val));
-
   }
 
   selectedOfferType(selected: string): void {
     this.offerActive = selected;
   }
 
-  removeAddon(id: Addons): void {
-    var index = this.adminService.addons.indexOf(id);
-    this.adminService.addons.splice(index, index + 1);
-    this.addon = this.adminService.addons;
+  removeAddon(id: string): void {
+    this.http.delete('/api/addons/' + id).subscribe((val) => {
+    });
+    this.getAddonsData();
   }
 
   addNewAddon(): void {
     this.isAdd = !this.isAdd;
-    this.newAddon = {
-      id: this.adminService.addons.length + 1,
-      name: this.addonName.value,
-      price: this.addonPrice.value
-    }
+    console.log(this.addonName.value)
     if (this.Edit) {
-      this.newAddon = {
-        id: this.Id,
-        name: this.addonName.value,
-        price: this.addonPrice.value
-      }
-
-      this.adminService.addons.forEach(element => {
-        if (element.id == this.Id) {
-          let index = this.adminService.addons.indexOf(element);
-          this.adminService.addons[index] = this.newAddon;
-        }
+      this.http.put('/api/addons/' + this.editid, { name: this.addonName.value, price: this.addonPrice.value }).subscribe((val) => {
       });
+      this.name = null;
+    this.price = null;
+    this.editid = null;
+    this.getAddonsData();
     }
     else {
-      this.adminService.addons.push(this.newAddon);
+      this.http.post('/api/addons', { name: this.addonName.value, price: this.addonPrice.value }).subscribe((val) => {
+      });
+      this.getAddonsData();
     }
-    this.addon = this.adminService.addons;
+    this.getAddonsData();
   }
 
   setAddnewflag(): void {
     this.isAdd = !this.isAdd;
+    this.addonName.clearAsyncValidators;
+    if(this.isAdd){
     this.name = null;
     this.price = null;
-    this.addonName.clearAsyncValidators;
+    this.editid = null;
+    }
   }
 
-  setEditvalue(value: Addons) {
+  setEditvalue(EAddon) {
     this.isAdd = !this.isAdd;
     this.Edit = true;
-    this.Id = value.id;
-    this.name = value.name;
-    this.price = value.price;
+    this.name = EAddon.name;
+    this.price = EAddon.price;
+    this.editid = EAddon._id;
   }
-
 }
