@@ -16,8 +16,8 @@ export const Addon = mongoose.model('addon', addonSchema);
 
 function validateAddons(user) {
     const schema = {
-        name: Joi.string().min(1).max(255).required(),
-        price: Joi.number().required()
+        name: Joi.string().min(1).max(255),
+        price: Joi.number()
     };
     return Joi.validate(user, schema);
 }

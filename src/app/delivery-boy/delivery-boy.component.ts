@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminServiceService } from 'app/admin-service.service';
-import { DeliveryBoy } from 'app/Interfaces/delivery-boy';
 import { HttpClient } from '@angular/common/http';
-
 
 
 @Component({
@@ -11,35 +9,34 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./delivery-boy.component.scss']
 })
 export class DeliveryBoyComponent implements OnInit {
+
+  displayedColumns: string[] = ['_id', 'firstName', 'phoneNumber', 'salary', 'isAvailable'];
+  dataSource;
+
+
   formOrData = true;
   showDetails = true;
-  index = 0;
-  deliverboys: any=null;
-  deliveryboyDetails: any=null;
+  deliverboys: any;
+  deliveryboyDetails:any;
 
 
   constructor(private adminService: AdminServiceService, private http: HttpClient) {
     this.http.get('/api/delivery_boy').subscribe((val) => {
       this.deliverboys = val;
-      console.log(val);
-    });
-
-  }
-
-  display_DeliveryBoy_details(id: String): void {
-    var url = '/api/delivery_boy/'+id;
-    console.log(id);
-    this.showDetails = false;
-    this.http.get(url).subscribe((val) => {
-      this.deliveryboyDetails = val;
-      console.log(val);
+      this.dataSource = this.deliverboys.payload;
+      console.log(this.dataSource);
     });
   }
 
   ngOnInit() {
   }
 
-  showForm() {
+  display_DeliveryBoy_details(dataToDisplay): void {
+    this.showDetails = false;
+    this.deliveryboyDetails = dataToDisplay;
+  }
+
+  showForm(): void {
     this.formOrData = !this.formOrData;
   }
 

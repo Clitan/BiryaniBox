@@ -30,7 +30,7 @@
 
             <!-- offers data -->
             <div class="col-lg-6 col-md-12">
-                <div class="card"  style="min-height:450px">
+                <div class="card" style="min-height:450px">
                     <div class="card-header card-header-tabs card-header-primary">
                         <div class="nav-tabs-navigation">
                             <div class="nav-tabs-wrapper">
@@ -73,8 +73,8 @@
                             </div>
                             <div class="col-md-5">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Offer" [formControl]="aboutOffer"
-                                        ngModel name="Offer" required type="text">
+                                    <input matInput placeholder="Offer" [formControl]="aboutOffer" ngModel name="Offer"
+                                        required type="text">
                                     <mat-error>
 
                                     </mat-error>
@@ -82,8 +82,8 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Discount" [formControl]="Discount"
-                                        ngModel name="Discount" required type="text">
+                                    <input matInput placeholder="Discount" [formControl]="Discount" ngModel
+                                        name="Discount" required type="text">
                                     <mat-error>
 
                                     </mat-error>
@@ -96,8 +96,8 @@
                             </div>
                             <div class="col-md-5">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Upto" [formControl]="Upto"
-                                        ngModel name="Upto" required type="text">
+                                    <input matInput placeholder="Upto" [formControl]="Upto" ngModel name="Upto" required
+                                        type="text">
                                     <mat-error>
 
                                     </mat-error>
@@ -105,8 +105,8 @@
                             </div>
                             <div class="col-md-3">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Orders" [formControl]="Orders"
-                                         ngModel name="orders" required type="text">
+                                    <input matInput placeholder="Orders" [formControl]="Orders" ngModel name="orders"
+                                        required type="text">
                                     <mat-error>
 
                                     </mat-error>
@@ -117,25 +117,25 @@
                             </div>
                         </div>
 
-                        <div  class="tab-content">
+                        <div class="tab-content">
                             <div class="tab-pane active" id="offerTable">
                                 <table class="table">
                                     <thead class="text-primary">
-                                        <th  class="text-center">#</th>
-                                        <th  class="text-center">Discount</th>
-                                        <th  class="text-center">Upto</th>
-                                        <th  class="text-center">Applice</th>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">Discount</th>
+                                        <th class="text-center">Upto</th>
+                                        <th class="text-center">Applice</th>
                                     </thead>
                                     <tbody>
                                         <ng-container *ngFor="let Offer of offer;index as i">
                                             <ng-container *ngIf="Offer.type == offerActive">
                                                 <tr *ngFor="let offerList of Offer.offer;index as offerIndex">
-                                                    <td  class="text-center">
+                                                    <td class="text-center">
                                                         {{offerIndex+1}}
                                                     </td>
                                                     <td class="text-center">{{offerList.discount+"%"}}</td>
-                                                    <td  class="text-center">{{"Rs."+offerList.upto}}</td>
-                                                    <td  class="text-center">{{"For "+offerList.orders+" Order"}}</td>
+                                                    <td class="text-center">{{"Rs."+offerList.upto}}</td>
+                                                    <td class="text-center">{{"For "+offerList.orders+" Order"}}</td>
                                                     <td class="td-actions text-right">
                                                         <button mat-raised-button type="button" matTooltip="Edit"
                                                             [matTooltipPosition]="'above'"
@@ -164,164 +164,83 @@
             <!-- Addons data table -->
             <div class="col-lg-6 col-md-12">
 
-                    <div class="card" style="min-height:450px">
-                        <div class="card-header card-header-warning">
-                            <span class="card-title display-4 font-weight-bold">Addons</span>
-                            <button mat-raised-button type="button"
-                                class=" float-right pr-2 btn btn-white btn-link btn-lg btn-just-icon">
-                                <i *ngIf="!isAdd" matTooltip="new" [matTooltipPosition]="'above'" (click)="setAddnewflag()"
-                                    class="material-icons">add_circle_outline</i>
-                                <i *ngIf="isAdd" matTooltip="cancel" [matTooltipPosition]="'above'"
-                                    (click)="setAddnewflag()" class="material-icons">clear</i>
-                            </button>
-                            <span class="d-block card-category" style="padding-bottom: 20px">Best choice for customer order</span>
-                        </div>
-    
-                        <div class="card-body table-responsive">
-                            <div *ngIf="isAdd" class="row">
-                                <div class="col-md-1">
-    
-                                </div>
-                                <div class="col-md-5">
-                                    <mat-form-field>
-                                        <input matInput placeholder="Addon Name" [formControl]="addonName"
-                                            [(ngModel)]="name" (change)="onNameChange()" ngModel name="addonName" required
-                                            type="text">
-                                        <mat-error>
-    
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field >
-                                        <input matInput placeholder="Addon price" [formControl]="addonPrice"
-                                            [(ngModel)]="price" (change)="onPriceChange()" ngModel name="addonPrice"
-                                            required type="text">
-                                        <mat-error>
-    
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-1">
-                                    <button mat-raised-button class="btn btn-warning" *ngIf="addonName.value!=null&& addonPrice.value!=null && addonName.value!='' &&  addonPrice.value!=''" 
-                                    (click)="addNewAddon()">Save</button>
-                                </div>
+                <div class="card" style="min-height:450px">
+                    <div class="card-header card-header-warning">
+                        <span class="card-title display-4 font-weight-bold">Addons</span>
+                        <button mat-raised-button type="button"
+                            class=" float-right pr-2 btn btn-white btn-link btn-lg btn-just-icon">
+                            <i *ngIf="!isAdd" matTooltip="new" [matTooltipPosition]="'above'" (click)="setAddnewflag()"
+                                class="material-icons">add_circle_outline</i>
+                            <i *ngIf="isAdd" matTooltip="cancel" [matTooltipPosition]="'above'"
+                                (click)="setAddnewflag()" class="material-icons">clear</i>
+                        </button>
+                        <span class="d-block card-category" style="padding-bottom: 20px">Best choice for customer
+                            order</span>
+                    </div>
+
+                    <div class="card-body table-responsive">
+                        <div *ngIf="isAdd" class="row">
+                            <div class="col-md-1">
+
                             </div>
-    
-                            <table class="table table-hover ">
-                                <thead class="text-warning">
-                                    <th  class="text-center">#</th>
-                                    <th  class="text-center" colspan="2">Addon</th>
-                                    <th  class="text-center">price</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let addons of data.payload;index as i">
-                                        <td  class="text-center">{{i+1}}</td>
-                                        <td  class="text-center" colspan="2">{{addons.name}}</td>
-                                        <td  class="text-center">{{addons.price}}</td>
-                                        <td class="td-actions">
-                                            <button mat-raised-button type="button" matTooltip="Edit"
-                                                [matTooltipPosition]="'above'" [ngClass]="{disabled : isAdd }"
-                                                class="pr-2 btn btn-warning btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons" (click)="setEditvalue(addons)">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                [matTooltipPosition]="'above'" (click)="removeAddon(addons)"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="col-md-5">
+                                <mat-form-field>
+                                    <input matInput placeholder="Addon Name" [formControl]="addonName"
+                                        [(ngModel)]="name" (change)="onNameChange()" ngModel name="addonName" required
+                                        type="text">
+                                    <mat-error>
+
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Addon price" [formControl]="addonPrice"
+                                        [(ngModel)]="price" (change)="onPriceChange()" ngModel name="addonPrice"
+                                        required type="text">
+                                    <mat-error>
+
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-1">
+                                <button mat-raised-button class="btn btn-warning"
+                                    *ngIf="addonName.value!=null&& addonPrice.value!=null && addonName.value!='' &&  addonPrice.value!=''"
+                                    (click)="addNewAddon()">Save</button>
+                            </div>
                         </div>
+
+                        <table class="table table-hover ">
+                            <thead class="text-warning">
+                                <th class="text-center">#</th>
+                                <th class="text-center" colspan="2">Addon</th>
+                                <th class="text-center">price</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let addons of data.payload;index as i">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center" colspan="2">{{addons.name}}</td>
+                                    <td class="text-center">{{addons.price}}</td>
+                                    <td class="td-actions">
+                                        <button mat-raised-button type="button" matTooltip="Edit"
+                                            [matTooltipPosition]="'above'" [ngClass]="{disabled : isAdd }"
+                                            class="pr-2 btn btn-warning btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons" (click)="setEditvalue(addons)">edit</i>
+
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove"
+                                            [matTooltipPosition]="'above'" (click)="removeAddon(addons._id)"
+                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    
-    </div>
     </div>
 
-      </div>
-
-      <!-- Addons data table -->
-      <div class="col-lg-6 col-md-12">
-    <div class="card" style="min-height:450px">
-                        <div class="card-header card-header-warning">
-                            <span class="card-title display-4 font-weight-bold">Addons</span>
-                            <button mat-raised-button type="button"
-                                class=" float-right pr-2 btn btn-white btn-link btn-lg btn-just-icon">
-                                <i *ngIf="!isAdd" matTooltip="new" [matTooltipPosition]="'above'" (click)="setAddnewflag()"
-                                    class="material-icons">add_circle_outline</i>
-                                <i *ngIf="isAdd" matTooltip="cancel" [matTooltipPosition]="'above'"
-                                    (click)="setAddnewflag()" class="material-icons">clear</i>
-                            </button>
-                            <span class="d-block card-category" style="padding-bottom: 20px">Best choice for customer order</span>
-                        </div>
-    
-                        <div class="card-body table-responsive">
-                            <div *ngIf="isAdd" class="row">
-                                <div class="col-md-1">
-    
-                                </div>
-                                <div class="col-md-5">
-                                    <mat-form-field>
-                                        <input matInput placeholder="Addon Name" [formControl]="addonName"
-                                            [(ngModel)]="name" (change)="onNameChange()" ngModel name="addonName" required
-                                            type="text">
-                                        <mat-error>
-    
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field >
-                                        <input matInput placeholder="Addon price" [formControl]="addonPrice"
-                                            [(ngModel)]="price" (change)="onPriceChange()" ngModel name="addonPrice"
-                                            required type="text">
-                                        <mat-error>
-    
-                                        </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-1">
-                                    <button mat-raised-button class="btn btn-warning" *ngIf="addonName.value!=null&& addonPrice.value!=null && addonName.value!='' &&  addonPrice.value!=''" 
-                                    (click)="addNewAddon()">Save</button>
-                                </div>
-                            </div>
-    
-                            <table class="table table-hover ">
-                                <thead class="text-warning">
-                                    <th  class="text-center">#</th>
-                                    <th  class="text-center" colspan="2">Addon</th>
-                                    <th  class="text-center">price</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let addons of data.payload;index as i">
-                                        <td  class="text-center">{{i+1}}</td>
-                                        <td  class="text-center" colspan="2">{{addons.name}}</td>
-                                        <td  class="text-center">{{addons.price}}</td>
-                                        <td class="td-actions">
-                                            <button mat-raised-button type="button" matTooltip="Edit"
-                                                [matTooltipPosition]="'above'" [ngClass]="{disabled : isAdd }"
-                                                class="pr-2 btn btn-warning btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons" (click)="setEditvalue(addons)">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                [matTooltipPosition]="'above'" (click)="removeAddon(addons)"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    </div>
-
+</div>
