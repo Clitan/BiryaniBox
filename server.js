@@ -11,6 +11,9 @@ const customers = require('./server/routes/customer_routes');
 const delivery_routes = require('./server/routes/delivery_routes');
 const users = require('./server/routes/users');
 const login = require('./server/routes/login');
+const offers = require('./server/routes/offers');
+const offerTypes = require('./server/routes/offersType');
+const user_offers = require('./server/routes/user_offer');
 
 const port = 3000;
 
@@ -34,6 +37,9 @@ app.use('/api/delivery_boy', delivery_boy);
 app.use('/api/delivery', delivery_routes);
 app.use('/api/menu', menu);
 app.use('/api/addons', addons);
+app.use('/api/offers', offers);
+app.use('/api/offerTypes', offerTypes);
+app.use('/api/user_offers', user_offers);
 
 
 app.get('*', (req, res) => {
@@ -41,7 +47,7 @@ app.get('*', (req, res) => {
 
 });
 app.listen(port, function () {
-  console.log("Running on port" + port);
+  console.log("Running on port " + port);
 });
 
 export default app;
