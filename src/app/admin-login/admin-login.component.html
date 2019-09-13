@@ -1,48 +1,66 @@
+<form name="form" #ngForm="ngForm" >
 <mat-card class="example-card">
-	<form >
+	
 		<mat-card-content>
-           <mat-icon id="admin">account_circle</mat-icon>
-              <mat-form-field class="example-full-width">
-				  
-				<input matInput placeholder="Email Address" name="email" id="email" type="email"  required>
-					
-                    <mat-icon matPrefix>email</mat-icon>
-				     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-				   </mat-form-field>
-				   
-				  <p id="p1" > OR</p>
-
-		<mat-form-field hintlabel="max 10 character">
-				<input matInput #input maxlength="10" type="number" minlength="10" placeholder="Phone Number"  required>
-				<!-- [formControl]="phone" -->
-				<mat-icon matPrefix>phone</mat-icon>
+			<div class="row">
+					<div class="col"></div>
+					<div class="col">
+							<mat-icon id="admin">account_circle</mat-icon>
+							 
+								 </div>
+							<div class="col"></div>
 				
-				<mat-error *ngIf="email.invalid">{{getError()}}</mat-error>
+			</div>
+			
+							<mat-form-field class="example-full-width">
+ 				<input matInput placeholder="Email Address" name="email" id="email" name="email" type="text" [formControl]="email" required>
+				<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> 
+					<mat-icon matPrefix>email</mat-icon>
+					
+				   
+				   </mat-form-field>
+			
+         <div>
+			 <div id="d1">OR</div>
+		<mat-form-field hintlabel="max 10 character">
+				<input matInput #input type="text" [formControl]="phone" placeholder="Phone Number" maxLength="10" minLength="10" required  >
+				
+				<mat-icon matPrefix>phone</mat-icon>
+		        <!-- <span ng-if="form.emailphone.$error.pattern">Enter correct email or phone number!</span>  -->
+
+				
+				 <mat-error *ngIf="phone.invalid">{{getError()}}</mat-error>
+				
 				   </mat-form-field>
 			
 			
 			<mat-form-field class="example-full-width">
-				<input matInput placeholder="Password" [type]="hide ?'password':'text'"  required >
+				<input matInput placeholder="Password" [type]="hide ?'password':'text'" [formControl]="passFormControl" required >
 				<mat-icon matPrefix>lock</mat-icon>
 				<button mat-icon-button matSuffix (click)="hide=!hide" [attr.aria-label]="'hide password'"
 					[attr.aria-pressed]="hide">
-					<mat-icon>{{hide ? 'visibility_off':'visibility'}}</mat-icon>
+					<mat-icon>{{hide? 'visibility_off':'visibility'}}</mat-icon>
 
-				</button>
-				<!-- <mat-error *ngIf="passFormControl.invalid">{{getpass}}</mat-error> -->
-				<mat-error *ngIf="passFormControl.hasError('minlength')">must enter 8 character</mat-error>
+				</button> 
+				<mat-error *ngIf="passFormControl.invalid">{{getpass()}}</mat-error> 
+				 <!-- <mat-error *ngIf="passFormControl.hasError('minlength')">must enter 8 character</mat-error>-->
 				   
-				   <mat-error *ngIf="passFormControl.hasError('maxlength')">must enter 8 character</mat-error>
+				   <mat-error *ngIf="passFormControl.hasError('maxlength')">must enter 8 character</mat-error> 
                    </mat-form-field>
 			
-			   
-		     </mat-card-content>
+				
+			</div>
+			 </mat-card-content>
+			
 		        <mat-card-actions>
-			<button mat-raised-button color="accent"  >Login</button>
-
+			<button mat-raised-button color="accent" type="submit" [type]="loading?'loading?':'text'" (click)="onSubmit()">Login</button>
+			
 		</mat-card-actions>
 
-	</form>
-	<p>No account? <a>Create account</a></p>
+	 
+	
+	<p>No account? <a [routerLink]="['/signup']" >Create account</a></p>
+	
 
-</mat-card>
+	</mat-card>
+</form>

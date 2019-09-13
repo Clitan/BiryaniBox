@@ -20,9 +20,9 @@ export default class UserController extends CustomerController {
       email: req.body.email,
       password: req.body.password
     });
-    const token = User.generateAuthToken();
+    // const token = User.generateAuthToken();
     await User.save();
-    res.header('x-auth-token', token);
+    // res.header('x-auth-token', token);
     return resSuccess(res, _.pick(User, ['_id', 'name', 'email', 'phoneNumber']));
   }
 
@@ -42,11 +42,11 @@ export default class UserController extends CustomerController {
       const validpassword = await bcrypt.compare(req.body.password, user_name.password);
       const err = 'Invalid email or password';
       if (!validpassword) return resError(res, err);
-      else {
-        const token = user_name.generateAuthToken();
-        res.header('x-auth-token', token);
-        return resSuccess(res, 'Token generated in header');
-      }
+      // else {
+      //   // const token = user_name.generateAuthToken();
+      //   // res.header('x-auth-token', token);
+      //   return resSuccess(res, 'Token generated in header');
+      // }
     } catch (e) {
       return next(e);
     }

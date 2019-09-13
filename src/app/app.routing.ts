@@ -5,10 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-
+import { AdminSignupComponent } from './admin-login/admin-signup/admin-signup.component';
 const routes: Routes =[
 
-    { path: 'Login', component: AdminLoginComponent },
+    { path: 'login', component: AdminLoginComponent },
+    { path: 'signup', component: AdminSignupComponent },
 
   {
     path: '',

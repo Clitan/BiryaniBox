@@ -44,7 +44,6 @@ import { AdminLoginComponent } from 'app/admin-login/admin-login.component';
     UserProfileComponent,
     TableListComponent,
     DeliveryBoyComponent,
-
     AddonsListComponent
   ]
 })

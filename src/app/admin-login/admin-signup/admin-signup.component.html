@@ -1,3 +1,52 @@
-<p>
-  admin-signup works!
-</p>
+<form (ngSubmit)="submit()" >
+<mat-card class="example-card">
+<div id="main">
+  <h4>Signup</h4>
+
+<mat-form-field class="example-full-width">
+        
+    <input matInput placeholder="Name"  type="text" [formControl]="usrname"  id="name" required>
+    
+  
+             <mat-error *ngIf="usrname.hasError('pattern')">
+              Must Enter valid name
+                   </mat-error>  
+        <mat-error *ngIf="usrname.invalid">{{getusr()}}</mat-error>
+           
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email Address" name="email" id="email" type="email" [formControl]="email" required>
+					
+           
+             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+           </mat-form-field>
+           <mat-form-field hintlabel="max 10 character">
+				<input matInput #input maxlength="10" type="number"  placeholder="Phone Number" [formControl]="phone"  required minlength="10">
+        <mat-error *ngIf="phone.invalid">{{getError()}}</mat-error>
+         <mat-error *ngIf="phone.hasError('minlength')">Password must be at least 8 characters
+        </mat-error> 
+				   </mat-form-field>
+            
+  
+
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" type="password" [formControl]="passFormControl" required minlength="8" maxlength="8">
+    
+     
+      <mat-error *ngIf="passFormControl.hasError('required')">
+     Please Enter password 
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('minlength')">Password must be at least 8 characters
+          </mat-error>
+          <mat-error *ngIf="passFormControl.hasError('maxlength')">Password must be at least 8 characters
+            </mat-error>
+     
+    </mat-form-field>
+    
+      <button mat-raised-button color="accent" type="submit" >Signup</button>
+     <p> Already have an account? <a [routerLink]="['/login']">Login</a></p>
+   
+   
+    </div>
+  </mat-card>
+  </form>

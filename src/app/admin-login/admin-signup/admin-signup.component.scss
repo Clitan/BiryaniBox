@@ -1,0 +1,60 @@
+
+// .example-form {
+//   min-width: 150px;
+//   max-width: 500px;
+//   width: 100%;
+// }
+
+// .example-full-width {
+//   width: 100%;
+// }
+.example-card {
+  max-width: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-52%, 18%);
+  box-shadow: 1px 5px 16px -9px;
+}
+
+.mat-raised-button.mat-accent {
+  background-color: #ff5840;
+}
+h4{
+  color: #ff5840;
+  text-align: center;
+ font-weight: bold;font-size: 30px;
+}
+.mat-card-actions .mat-raised-button:first-child {
+  
+  margin-top: 22px;
+  height: 53px;
+  margin-left: -1px;
+    width: 387px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 1.25em;
+  width: 322px;
+  margin-left: 20px;
+}
+
+
+
+
+
+p{
+  font-size: 13px;
+    margin-top: 12px;
+}
+.mat-form-field-infix
+{
+   margin-top: 13px;
+}
+ #img
+ {
+  height:300px;
+   width:400;
+ }
+ .mat-form-field-wrapper {
+  position: relative;
+  width: 60x;
+}
